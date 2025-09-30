@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        header, 
+        footer {
+            background-color: rgb(100, 200, 255);
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 300;
+            color: rgb(50, 50, 250);
+        }
+
+        nav ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 20px;
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            margin: 10px auto 10px auto;
+            border-bottom: 2px solid black;
+            padding-bottom: 8px;
+        }
+
+        .active {
+            font-weight: bold;
+        }
+
+        .cursive {
+            font-style: italic;
+        }
+
+        #addContent {
+            color: darkolivegreen;
+        }
+
+        nav ul li:last-child {
+            border-bottom: none;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+            nav ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+
+            nav ul li {
+                border-bottom: none;
+                margin: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="cursive"><a href="#somelinkhere">Home</a></li>
+                <li class="active cursive"><a href="#somelinkhere">Work</a></li>
+                <li class="cursive"><a href="#somelinkhere">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Responsive example</h1>
+        <p>This is a simple example of a responsive navigation bar using HTML and CSS. Resize the browser window to see how the navigation bar adapts to different screen sizes.</p>
+        <p id="addContent">Additional content can go here.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus autem pariatur eligendi aut labore. Nulla qui ipsum aliquam, ex, non placeat ipsam voluptatem quia illo repellendus suscipit fugit reprehenderit nisi!</p>    
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
