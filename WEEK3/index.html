@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Art de Papier's Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Image Gallery</h1>
+        <img src="images/image1.jpg" alt="Image 1" class="thumbnail active" onclick="changeImage(0)">
+            <img src="images/image2.jpg" alt="Image 2" class="thumbnail" onclick="changeImage(1)">
+            <img src="images/image3.jpg" alt="Image 3" class="thumbnail" onclick="changeImage(2)">
+            <img src="images/image4.jpg" alt="Image 4" class="thumbnail" onclick="changeImage(3)">
+        </div>
+    </header>
+    <main id="mainDisplay">
+        <img src="images/image1.jpg" alt="Main display" id="mainImage">
+    </main>
+
+ <footer>
+        <button id="playButton" onclick="startAutoPlay()">Play</button>
+        <button id="pauseButton" onclick="pauseAutoPlay()" disabled>Pause</button>
+    </footer>
+
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>
