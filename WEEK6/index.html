@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Blog - Shruti Amritkar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .author-info {
+            color: #a0a0a0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .author-info strong {
+            color: #c0c0c0;
+            font-weight: 600;
+        }
+
+        .intro-statement {
+            text-align: center;
+            margin: 30px 0 50px 0;
+            padding: 20px 40px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .intro-statement p {
+            color: #d0d0d0;
+            font-size: 1.1em;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .reading-section {
+            margin-bottom: 50px;
+        }
+
+        .reading-title {
+            font-size: 1.8em;
+            color: #8a2be2;
+            margin-bottom: 30px;
+            font-weight: 700;
+            padding-left: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .quote-card {
+            background: rgba(138, 43, 226, 0.05);
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .quote-card:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .quote-text {
+            font-size: 1.15em;
+            color: #e8e8e8;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .quote-text::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3em;
+            color: #667eea;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .response {
+            color: #b8b8b8;
+            font-size: 1.05em;
+            line-height: 1.8;
+            padding-left: 25px;
+            border-left: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.3), transparent);
+            margin: 50px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(138, 43, 226, 0.3);
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .reading-title {
+                font-size: 1.4em;
+            }
+
+            .quote-text {
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Design Blog</h1>
+            <div class="author-info">
+                <strong>Shruti Amritkar</strong><br>
+                Graduate Student - M.Des in Interaction Design<br>
+                ArtCenter College of Design
+            </div>
+        </header>
+
+        <div class="intro-statement">
+            <p>Enjoy these reflections on two insightful readings that explore the intersection of design, technology, and creative process.</p>
+        </div>
+
+        <!-- Reading 1 -->
+        <section class="reading-section">
+            <h2 class="reading-title">Reading 1: Introduction to Programming Design Systems</h2>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    We now spend a majority of our time looking at screens instead of paper, and this has created a great need for designers who understand how to design for digital devices.
+                </p>
+                <p class="response">
+                    This resonates deeply with my own experience. As a designer, I've noticed how my creative process has shifted—I find myself reaching for my tablet or opening Figma before even considering a sketchbook. While this digital-first approach offers incredible efficiency and iteration speed, I sometimes wonder if we're losing something valuable in the translation from physical to digital. The tactile experience of sketching on paper engages different parts of our creative thinking, and there's an immediacy to hand-drawn ideation that screens can't fully replicate.
+                </p>
+            </div>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    However, there is a century-long bond between the field of design and new advances in technology, and if graphic designers do not become fluent in this new digital reality, they will become irrelevant.
+                </p>
+                <p class="response">
+                    This statement feels particularly urgent in the age of AI and generative design tools. The reality is harsh but undeniable: designers who resist adapting to new technologies risk being left behind—not necessarily by AI itself, but by other designers who leverage these tools to work smarter and faster. However, I believe the key isn't just learning new tools; it's understanding how to maintain our human-centered design thinking while embracing technological advances. The designers who will thrive are those who can balance technical fluency with creative empathy and critical thinking—qualities that AI cannot replicate.
+                </p>
+            </div>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    History has shown us that systems can cure the fear of the blank canvas.
+                </p>
+                <p class="response">
+                    This is such a powerful yet often overlooked insight. Design systems, grids, typographic hierarchies—these aren't constraints that limit creativity; they're frameworks that liberate it. When we have a systematic approach, we can focus our creative energy on solving real problems rather than getting paralyzed by infinite possibilities. I've experienced this firsthand in my architecture background, where structural systems and building codes didn't restrict design—they provided the foundation for innovation.
+                </p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Reading 2 -->
+        <section class="reading-section">
+            <h2 class="reading-title">Reading 2: What Do Prototypes Prototype?</h2>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    Selecting the focus of a prototype is the art of identifying the most important open design questions.
+                </p>
+                <p class="response">
+                    This reframes prototyping from a technical exercise into a strategic design decision. As designers, we often feel pressure to prototype everything, but the real skill lies in knowing what questions need answering first. Is it about the interaction model? The visual hierarchy? The technical feasibility? Understanding user pain points helps us prioritize which aspects of a design deserve rapid iteration versus which can wait. This focused approach saves time, resources, and prevents the common pitfall of over-designing solutions before validating core assumptions.
+                </p>
+            </div>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    What is significant is not what media or tools were used to create them, but how they are used by a designer to explore or demonstrate some aspect of the future artifact.
+                </p>
+                <p class="response">
+                    In today's tool-saturated design landscape, this quote is incredibly liberating. We're constantly bombarded with the "best" tools and software, but what truly matters is the designer's intent and process, not whether they used Figma, Sketch, or even paper prototypes. The most successful products aren't built by designers with the fanciest toolkits—they're created by designers who deeply understand problems and use whatever means necessary to test solutions. A well-crafted paper prototype that answers critical user questions is infinitely more valuable than a high-fidelity mockup that looks beautiful but solves nothing.
+                </p>
+            </div>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    Integrated prototypes help designers to balance and resolve constraints arising in different design dimensions; to verify that the design is complete and coherent; and to find synergy in the design of the integration itself.
+                </p>
+                <p class="response">
+                    This speaks to the complexity of real-world design challenges. Products don't exist in isolation—they must work across technical, aesthetic, functional, and business dimensions simultaneously. Integrated prototypes force us to confront these competing constraints early, revealing conflicts between what looks good, what works technically, and what users actually need. The "synergy in the design of the integration" is where magic happens: when constraints from different dimensions inform each other, they create solutions that are more elegant and holistic than any single-dimension optimization could achieve.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>ArtCenter College of Design | Interaction Design | 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
