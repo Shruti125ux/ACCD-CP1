@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion in Motion - Design Process Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 30px;
+            background: white;
+            box-shadow: 0 0 40px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #000;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .project-subtitle {
+            font-size: 1.3em;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            font-size: 0.95em;
+        }
+
+        .meta-item {
+            padding: 8px 20px;
+            background: #f5f5f5;
+            border-radius: 20px;
+            color: #555;
+        }
+
+        section {
+            margin-bottom: 70px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            color: #000;
+            margin-bottom: 25px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 70%;
+            background: #000;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            color: #333;
+            margin: 35px 0 20px 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .intro-box p {
+            color: white;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+        }
+
+        .intro-box strong {
+            color: #ffd93d;
+        }
+
+        .phase-container {
+            background: #f9f9f9;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .image-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            padding: 25px;
+            background: white;
+        }
+
+        .image-caption h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .image-caption p {
+            font-size: 1em;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .environments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .env-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .env-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .env-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .env-card-content {
+            padding: 20px;
+        }
+
+        .env-card-content h4 {
+            font-size: 1.2em;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .env-card-content p {
+            font-size: 0.95em;
+            color: #666;
+            margin: 0;
+        }
+
+        .process-timeline {
+            position: relative;
+            padding-left: 50px;
+            margin: 40px 0;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.3em;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #555;
+            margin: 0;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffd93d;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: #d68910;
+        }
+
+        .next-steps {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .next-steps h3 {
+            color: #1a5f7a;
+            margin-top: 0;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #2c5f77;
+            font-size: 1.05em;
+        }
+
+        .next-steps li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #1a5f7a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            border-top: 2px solid #eee;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+
+            .environments-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NOTION IN MOTION</h1>
+            <p class="project-subtitle">Redesigning Notion for Creative Freelancers on the Go</p>
+            <div class="meta-info">
+                <span class="meta-item">📱 Mobile App Redesign</span>
+                <span class="meta-item">🎨 UX/UI Design</span>
+                <span class="meta-item">👤 Designer: Shruti Amritkar</span>
+                <span class="meta-item">🛠️ Tools: Blender, Figma</span>
+            </div>
+        </header>
+
+        <section class="project-overview">
+            <h2>Project Overview</h2>
+            <div class="intro-box">
+                <p><strong>Challenge:</strong> Creative freelancers juggle multiple projects while constantly on the move. They need quick access to their Notion workspace without being tethered to their desktops or laptops.</p>
+                <p><strong>Solution:</strong> Redesign the Notion mobile app specifically for creative freelancers who need to check progress, manage tasks, and stay organized while working from cafes, co-working spaces, or outdoor environments.</p>
+                <p><strong>Approach:</strong> Understand the physical environments where users interact with the app, then design contextually-aware mobile experiences that fit seamlessly into their workflow.</p>
+            </div>
+        </section>
+
+        <section class="research-phase">
+            <h2>Phase 1: Environmental Exploration</h2>
+            
+            <div class="phase-container">
+                <h3>Understanding User Context</h3>
+                <p>
+                    As a designer with an architectural background, I believe that understanding the <strong>physical environment</strong> is crucial to designing effective digital experiences. Before diving into the app redesign, I explored the three primary environments where creative freelancers work when they're away from their primary workstations.
+                </p>
+                <p>
+                    This environmental research helps inform decisions about interface brightness, interaction patterns (one-handed vs. two-handed), notification strategies, and feature prioritization based on context.
+                </p>
+            </div>
+
+            <h3>Three Key Environments Explored</h3>
+            
+            <div class="environments-grid">
+                <div class="env-card">
+                    <img src="image1.jpg" alt="Cafe/Coffee House Environment">
+                    <div class="env-card-content">
+                        <h4>1. Cafe / Coffee House</h4>
+                        <p><strong>Context:</strong> Social atmosphere, ambient noise, natural and ambient lighting, often shared seating</p>
+                        <p><strong>User Behavior:</strong> Quick check-ins, light editing, responding to comments, reviewing progress</p>
+                        <p><strong>Design Implications:</strong> Need for glanceable information, easy one-handed navigation, distraction-resistant interface</p>
+                    </div>
+                </div>
+
+                <div class="env-card">
+                    <img src="image2.jpg" alt="Home Workspace/Desk">
+                    <div class="env-card-content">
+                        <h4>2. Home Workspace / Desk</h4>
+                        <p><strong>Context:</strong> Controlled environment, good lighting, minimal distractions, comfortable seating</p>
+                        <p><strong>User Behavior:</strong> Longer sessions, detailed work, focused task completion, reference checking</p>
+                        <p><strong>Design Implications:</strong> Support for extended mobile use, detailed view options, comfortable reading interfaces</p>
+                    </div>
+                </div>
+
+                <div class="env-card">
+                    <img src="image3.jpg" alt="Outdoor Creative Space">
+                    <div class="env-card-content">
+                        <h4>3. Outdoor Creative Space</h4>
+                        <p><strong>Context:</strong> Natural light (potentially bright sunlight), varying seating, inspiration-seeking</p>
+                        <p><strong>User Behavior:</strong> Ideation, capturing quick notes, brainstorming, checking deadlines</p>
+                        <p><strong>Design Implications:</strong> High contrast for sunlight readability, quick capture features, voice input support</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Key Insight:</strong> While all three environments have unique characteristics, the <strong>cafe/coffee house</strong> emerged as the most common and versatile workspace for creative freelancers. It balances social energy with productivity, offers amenities (power, wifi, coffee), and provides a change of scenery that many freelancers crave.</p>
+            </div>
+        </section>
+
+        <section class="deep-dive">
+            <h2>Phase 2: Deep Dive into Cafe Environment</h2>
+            
+            <p>
+                After exploring all three environments, I chose to focus specifically on the <strong>cafe/coffee house context</strong> for detailed design exploration. This environment represents the quintessential "mobile freelancer" experience and offers rich opportunities for contextual design.
+            </p>
+
+            <h3>Object Mapping & Ecosystem Analysis</h3>
+            
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="image1.jpg" alt="Cafe Environment Mood Board">
+                    <div class="image-caption">
+                        <h4>Cafe Environment: Visual Research</h4>
+                        <p>Explored material palettes, lighting conditions, and spatial arrangements typical of coffee houses. Notice the warm wood tones, ambient lighting from Edison bulbs, natural materials, and the balance between private focus and social awareness.</p>
+                    </div>
+                </div>
+
+                <div class="image-item">
+                    <img src="image4.jpg" alt="Creative Freelancer Object Map">
+                    <div class="image-caption">
+                        <h4>User Ecosystem Mapping</h4>
+                        <p>Identified all objects and touchpoints in a creative freelancer's cafe environment. Central to the experience is the <strong>freelancer</strong> surrounded by essential tools and environmental elements:</p>
+                        <ul style="margin-top: 15px; padding-left: 25px; color: #555;">
+                            <li><strong>Digital Tools:</strong> Mobile phone, laptop (not always), work diary/planner</li>
+                            <li><strong>Physical Comforts:</strong> Coffee cup, donut/snack, comfortable seating (table, chair)</li>
+                            <li><strong>Ambient Elements:</strong> Lighting (natural and artificial), plants (atmosphere), pen (note-taking)</li>
+                            <li><strong>Personal Items:</strong> Purse/bag (mobility and security)</li>
+                        </ul>
+                        <p style="margin-top: 15px;">This mapping helps prioritize features: quick glanceability (competing with coffee, conversations), one-handed operation (other hand holds coffee), and contextual notifications that don't disrupt the cafe flow.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="prototyping">
+            <h2>Phase 3: 3D Prototyping in Blender</h2>
+            
+            <p>
+                To truly understand spatial relationships and user interactions in the cafe environment, I'm building a 3D scene in Blender. This approach—bridging my architectural background with interaction design—allows me to test different layouts, lighting conditions, and interaction patterns in a realistic context before committing to final app designs.
+            </p>
+
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <h4>Step 1: Foundation - The Table</h4>
+                    <p>Started with the most fundamental element: the cafe table. This establishes scale, material properties, and serves as the stage for all other objects. The table's dimensions inform phone placement, reachability, and user comfort.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Step 2: Adding Context (In Progress)</h4>
+                    <p>Building out the complete scene with mobile phone, chair, coffee cup, and ambient elements. Each object is carefully positioned based on ergonomic research and observational studies of real cafe users.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Step 3: Interaction Simulation</h4>
+                    <p>Will test different phone positions, hand positions, and viewing angles to optimize the app interface for real-world cafe usage patterns.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Step 4: Lighting & Atmosphere</h4>
+                    <p>Simulate various lighting conditions (morning natural light, afternoon sun glare, evening ambient lighting) to ensure UI readability across all scenarios.</p>
+                </div>
+            </div>
+
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="image5.png" alt="3D Table Prototype in Blender">
+                    <div class="image-caption">
+                        <h4>Current Progress: Basic Table Model</h4>
+                        <p>Initial 3D model of a cafe table in Blender. This minimalist approach focuses on essential geometry while maintaining realistic proportions. The clean, simple form allows me to layer additional elements progressively and test different configurations without visual clutter.</p>
+                        <p style="margin-top: 10px;"><em>Next Steps: Adding mobile phone, coffee cup, chair, and testing various arrangements to find optimal viewing angles and interaction patterns.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="methodology">
+            <h2>Design Methodology</h2>
+            
+            <div class="phase-container">
+                <h3>Human-Centered Design Approach</h3>
+                <p>
+                    My architectural training emphasized understanding how people inhabit and move through space. I'm applying these same principles to mobile UX design:
+                </p>
+                <ul style="margin: 20px 0 20px 30px; color: #555;">
+                    <li><strong>Spatial Context:</strong> Physical environment shapes digital interaction patterns</li>
+                    <li><strong>Ergonomics:</strong> How users hold phones, reach for coffee, maintain posture affects UI layout</li>
+                    <li><strong>Lighting Design:</strong> Environmental lighting conditions inform color choices and contrast ratios</li>
+                    <li><strong>User Flow:</strong> Like circulation in architecture, information flow must feel natural and intuitive</li>
+                    <li><strong>Materiality:</strong> Digital affordances should feel as tangible as physical materials</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="next-steps-section">
+            <div class="next-steps">
+                <h3>🚀 Next Steps in the Process</h3>
+                <ul>
+                    <li>Complete 3D cafe scene with all environmental elements (phone, chair, coffee, lighting)</li>
+                    <li>Test multiple camera angles and user positions to identify optimal UI layouts</li>
+                    <li>Capture renders showing different lighting conditions and times of day</li>
+                    <li>Define mobile UI patterns based on spatial research findings</li>
+                    <li>Create high-fidelity mockups of Notion mobile app optimized for cafe context</li>
+                    <li>Prototype micro-interactions that feel natural in social environments</li>
+                    <li>User testing with actual freelancers in real cafe settings</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="continued-process">
+            <h2>Phase 4: Detailed 3D Scene Development</h2>
+            
+            <p>
+                After establishing the foundation, I continued building out the cafe environment with additional objects and realistic lighting to create an authentic workspace simulation.
+            </p>
+
+            <h3>Step 1: Exploration of Objects</h3>
+            <p>Identified and mapped essential cafe objects to understand the complete user ecosystem.</p>
+
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="image8.png" alt="Cafe objects top view">
+                    <div class="image-caption">
+                        <h4>Cafe Environment Object Mapping</h4>
+                        <p>Top-down view of essential objects: mobile phone, coffee cup, donut, pens. This layout informs spatial arrangement and reachability in the 3D scene.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Step 2: Table Modeling</h3>
+            <p>Created the cafe table in Blender. After adding the chair, realized the table height was too low and adjusted proportions for realistic cafe ergonomics.</p>
+
+            <div class="image-grid-two">
+                <div class="image-item">
+                    <img src="image6.png" alt="Initial table and chair model">
+                    <div class="image-caption">
+                        <h4>Initial Table Setup</h4>
+                        <p>First iteration with table and chair. Height proportions needed adjustment.</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="image7.png" alt="Adjusted table height">
+                    <div class="image-caption">
+                        <h4>Adjusted Table Height</h4>
+                        <p>Increased table height for proper ergonomic proportions and realistic cafe setting.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Step 3: Sourcing Assets</h3>
+            <p>Downloaded realistic 3D models of chair and coffee cup from Sketchfab to maintain quality while accelerating the scene building process.</p>
+
+            <h3>Step 4: Scene Arrangement</h3>
+            <p>Edited object settings and arranged elements to create an authentic cafe workspace, simulating real user behavior and spatial relationships.</p>
+
+            <div class="image-grid-two">
+                <div class="image-item">
+                    <img src="image10.png" alt="Complete cafe table setup front view">
+                    <div class="image-caption">
+                        <h4>View 1</h4>
+                        <p>All elements arranged: table, chairs, coffee, phone, donut. Testing user perspective and object placement.</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="image9.png" alt="Complete cafe table setup side view">
+                    <div class="image-caption">
+                        <h4>View 2</h4>
+                        <p>Added some more tables and chairs for the holistic cafe environment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Step 5: Lighting & Atmosphere</h3>
+            <p>Added environmental elements and adjusted sunlight angle to simulate natural cafe lighting conditions, testing how different lighting affects phone screen visibility.</p>
+
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="image11.png" alt="Final cafe scene with lighting">
+                    <div class="image-caption">
+                        <h4>Final Scene with Natural Lighting</h4>
+                        <p>Cafe environment with adjusted sunlight creating realistic shadows and atmosphere. This setup will inform mobile UI decisions around contrast, brightness, and readability in real-world cafe conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-steps-section">
+            <div class="next-steps">
+                <h3>🚀 Next Steps in the Process</h3>
+                <ul>
+                    <li>Define detailed UI patterns based on spatial research findings</li>
+                    <li>Create high-fidelity mockups of Notion mobile app optimized for cafe context</li>
+                    <li>Prototype micro-interactions that feel natural in social environments</li>
+                    <li>User testing with actual freelancers in real cafe settings</li>
+                </ul>
+            </div>
+        </section>
+
+         <section class="continued-process">
+            <h2>Phase 5: Medium fidelity UI Explorations</h2>
+            
+            <p>
+                After establishing the environment, I continued exploring and designing the UI screens for the Notion app.
+            </p>
+
+            <h3>Glimpses of Re-designed screens</h3>
+
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="image12.png" alt="Cafe objects top view">
+                </div>
+            </div>
+
+        <footer>
+            <p><strong>Shruti Amritkar</strong></p>
+            <p>Architect | Product Designer (UI/UX)</p>
+            <p>Currently pursuing Masters in Interaction Design at ArtCenter College of Design</p>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #999;">
+                Project: Notion in Motion | Creative Prototyping Documentation | 2025
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
