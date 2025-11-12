@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5.js Pattern Assignment - Creative Prototyping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #2d4263 100%);
+            color: #e0e7f1;
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #7dd3fc;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #93c5fd;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .figure {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .figure-title {
+            color: #a5b4fc;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 3px solid #6366f1;
+            overflow-x: auto;
+        }
+
+        .code-label {
+            color: #c7d2fe;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        code {
+            color: #bfdbfe;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            display: block;
+            white-space: pre;
+        }
+
+        ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 10px 0;
+            color: #cbd5e1;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        a {
+            color: #7dd3fc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #93c5fd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Creative Prototyping</h1>
+        <p class="subtitle">P5.js Pattern Assignment</p>
+        <p style="text-align: center; color: #93c5fd; font-size: 1.1em; margin-bottom: 40px;">Shruti Amritkar - M.Des, ArtCenter 2025</p>
+
+        <h2>Concept</h2>
+        <p>For this pattern assignment I wanted something inspired by my paper cutting designs. I browsed through some of my previous designs and picked one with repetitive patterns in it. A rectangle with multiple rectangles or slits with alternate voids in it.</p>
+
+        <h2>Process</h2>
+        
+        <p>Next I started exploring the ways in which I can do this in p5js.</p>
+
+        <p>First - I started with making a basic rectangle of size (600x400). Then I divided that rectangle into 6 equal rectangles vertically and horizontally. Then I wanted a dark background so chose the code (55) for it. For making the grid I explored the p5js grid options.</p>
+
+        <div class="figure">
+            <div class="figure-title">Figure 1</div>
+            <p>This is what I started with.</p>
+            <img src="image1.png" alt="Figure 1 - Initial grid setup">
+        </div>
+
+        <h2>Adding Slits</h2>
+        
+        <p>Now I wanted to add slits to each of the rectangles. Even after exploring the grid options on the reference page, it was a bit confusing so I went to Claude AI for more help and then added some vertical slits and colors to my composition.</p>
+
+        <ul>
+            <li>Added colorMode</li>
+            <li>Added code for vertical grid lines</li>
+            <li>Added code for 5 slits in each rectangle formed in the composition</li>
+        </ul>
+
+        <div class="figure">
+            <div class="figure-title">Figure 2</div>
+            <p>This shows the 5 vertical slits added to each of the rectangles.</p>
+            <img src="image2.png" alt="Figure 2 - Vertical slits added">
+        </div>
+
+        <h2>Color Refinement</h2>
+        
+        <p>Now I felt there were too many colors in this composition. I wanted to reduce a few of them. And make the composition in a cool color scheme only. So I changed the code accordingly to get colors (cyan, blue, purple).</p>
+
+        <div class="code-block">
+            <div class="code-label">Previous code:</div>
+            <code>// Color varies by position
+let hue = (i * 50 + j * 30) % 360;
+fill(hue, 80, 90);</code>
+        </div>
+
+        <div class="code-block">
+            <div class="code-label">New code:</div>
+            <code>// Cool colors only: hue range 180-280 (cyan, blue, purple)
+let hue = 180 + (i * 15 + j * 10) % 100;
+fill(hue, 80, 90);</code>
+        </div>
+
+        <div class="figure">
+            <div class="figure-title">Figure 3</div>
+            <p>This shows the 5 vertical slits with a cool color scheme.</p>
+            <img src="image3.png" alt="Figure 3 - Cool color scheme applied">
+        </div>
+
+        <h2>Diagonal Orientation</h2>
+        
+        <p>Now I wanted to rotate the slits such that they are in diagonal position and are mirroring each other. First I started with the orientation of slits in the odd numbered rectangles.</p>
+
+        <div class="figure">
+            <div class="figure-title">Figure 4</div>
+            <p>This shows the changed orientation of slits in odd numbered rectangles.</p>
+            <img src="image4.png" alt="Figure 4 - Odd numbered rectangles orientation">
+        </div>
+
+        <p>Similarly now I wanted to change the orientation of the rest of the slits in all the rectangles and make them diagonal to form a pattern.</p>
+
+        <div class="figure">
+            <div class="figure-title">Figure 5</div>
+            <p>This shows the changed orientation of slits in forward slash (/) manner.</p>
+            <img src="image5.png" alt="Figure 5 - Forward slash orientation">
+        </div>
+
+        <div class="figure">
+            <div class="figure-title">Figure 6</div>
+            <p>This shows the changed orientation of all the slits in odd and even rectangles. This creates a beautiful chevron/herringbone pattern</p>
+            <img src="image6.png" alt="Figure 6 - Chevron/herringbone pattern">
+        </div>
+
+        <h2>Adding Constraints</h2>
+        
+        <p>But the problem was that all of the slits were going outside the base grid that I started with in the very beginning. I wanted all the slits inside the rectangles. I needed to add some constraints. For this the 'Clipping' feature was added to keep all the slits within the boundaries of each of the rectangles.</p>
+
+        <div class="figure">
+            <div class="figure-title">Figure 7</div>
+            <p>All the slits within the constraints of the rectangles.</p>
+            <img src="image7.png" alt="Figure 7 - Slits with constraints">
+        </div>
+
+        <h2>Final Color Gradation</h2>
+        
+        <p>Now, I wanted to improve the color gradation from light to dark hues of cool colors.</p>
+
+        <div class="code-block">
+            <div class="code-label">Previous code:</div>
+            <code>// Cool colors only: hue range 180-280 (cyan, blue, purple)
+let hue = 180 + ((i * 15 + j * 10) % 100);
+fill(hue, 80, 90);</code>
+        </div>
+
+        <div class="code-block">
+            <div class="code-label">New code:</div>
+            <code>// Smooth color transition from cyan (180) to purple (280) based on column only
+let hue = map(i, 0, numLines - 1, 180, 280);
+fill(hue, 80, 90);</code>
+        </div>
+
+        <div class="figure">
+            <div class="figure-title">Figure 8</div>
+            <p>Changed color gradation.</p>
+            <img src="image8.png" alt="Figure 8 - Final color gradation">
+        </div>
+
+        <h2>Sources</h2>
+        <ul>
+            <li><a href="https://p5js.org/" target="_blank">P5.js Library</a> - Reference and documentation</li>
+            <li><a href="https://claude.ai/" target="_blank">Claude AI</a> - Assistance with grid options and code implementation</li>
+        </ul>
+    </div>
+</body>
+</html>
