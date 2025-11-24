@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P5.js Pattern Assignment - Creative Prototyping</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -20,7 +21,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -59,7 +60,7 @@
         }
 
         .figure img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 8px;
             margin-top: 15px;
@@ -123,6 +124,36 @@
         a:hover {
             color: #93c5fd;
         }
+
+        #canvas-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 0 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
     </style>
 </head>
 <body>
@@ -131,8 +162,27 @@
         <p class="subtitle">P5.js Pattern Assignment</p>
         <p style="text-align: center; color: #93c5fd; font-size: 1.1em; margin-bottom: 40px;">Shruti Amritkar - M.Des, ArtCenter 2025</p>
 
+        <h2>Animated Pattern</h2>
+
+        <div class="controls">
+            <button onclick="toggleAnimation()">Pause/Play Animation</button>
+            <button onclick="changeSpeed(0.5)">Slower</button>
+            <button onclick="changeSpeed(2)">Faster</button>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <h2>Animation Details</h2>
+        <p>All strips in every rectangle rotate slowly and continuously. The rotation is designed so that after completing a full 360-degree rotation, the pattern returns to its original base configuration - the chevron/herringbone pattern. This creates a mesmerizing cycle where the pattern transforms through various states before returning to its starting point.</p>
+
+        <p>The rotation starts from the base diagonal orientation, ensuring that at rotation angle 0° (and every 360° thereafter), you see the original static pattern. As the animation progresses, all strips rotate together, creating fluid, wave-like transformations across the entire composition while maintaining the cool color gradient from cyan to purple.</p>
+
         <h2>Concept</h2>
         <p>For this pattern assignment I wanted something inspired by my paper cutting designs. I browsed through some of my previous designs and picked one with repetitive patterns in it. A rectangle with multiple rectangles or slits with alternate voids in it.</p>
+
+        <div class="figure">
+            <img src="image0.jpg" alt="Paper cutting design inspiration">
+        </div>
 
         <h2>Process</h2>
         
@@ -250,5 +300,99 @@ fill(hue, 80, 90);</code>
             <li><a href="https://claude.ai/" target="_blank">Claude AI</a> - Assistance with grid options and code implementation</li>
         </ul>
     </div>
+
+    <script>
+        let numLines = 6;
+        let rotationOffset = 0;
+        let animationSpeed = 0.01;
+        let isAnimating = true;
+
+        function setup() {
+            let canvas = createCanvas(600, 400);
+            canvas.parent('canvas-container');
+            colorMode(HSB, 360, 100, 100);
+        }
+
+        function draw() {
+            background(40);
+            
+            // Draw grid lines
+            stroke(255);
+            strokeWeight(1);
+            for (let x = 0; x <= numLines; x = x + 1) {
+                let localStartX = (width / numLines) * x;
+                let localEndX = localStartX + width / numLines;
+                line(localStartX, 0, localStartX, height);
+                for (let y = 0; y <= numLines; y = y + 1) {
+                    let localStartY = (height / numLines) * y;
+                    let localEndY = localStartY + height / numLines;
+                    line(localStartX, localStartY, localEndX, localStartY);
+                }
+            }
+            
+            // Draw 5 slits in each rectangle
+            let cellW = width / numLines;
+            let cellH = height / numLines;
+            let numSlits = 5;
+            let slitWidth = cellW / (numSlits * 2);
+            let gapWidth = slitWidth;
+            
+            noStroke();
+            for (let i = 0; i < numLines; i++) {
+                for (let j = 0; j < numLines; j++) {
+                    let xPos = i * cellW;
+                    let yPos = j * cellH;
+                    
+                    // Diagonal gradation
+                    let gradientValue = (i + j) / ((numLines - 1) * 2);
+                    let hue = map(gradientValue, 0, 1, 180, 280);
+                    fill(hue, 80, 90);
+                    
+                    // Check diagonal direction
+                    let isForwardSlash = (i % 2 === 0 && j % 2 === 0) || (i % 2 === 1 && j % 2 === 1);
+                    
+                    // Draw each slit separately
+                    for (let k = 0; k < numSlits; k++) {
+                        push();
+                        
+                        // Create clipping region for this cell
+                        drawingContext.save();
+                        drawingContext.beginPath();
+                        drawingContext.rect(xPos, yPos, cellW, cellH);
+                        drawingContext.clip();
+                        
+                        translate(xPos + cellW / 2, yPos + cellH / 2);
+                        
+                        // ALL slits rotate, starting from their base diagonal position
+                        if (isForwardSlash) {
+                            rotate(PI / 4 + rotationOffset);
+                        } else {
+                            rotate(-PI / 4 + rotationOffset);
+                        }
+                        
+                        // Calculate slit position from center
+                        let slitX = -cellW / 2 + gapWidth + k * (slitWidth + gapWidth);
+                        rect(slitX, -cellH * 1.5, slitWidth, cellH * 3);
+                        
+                        drawingContext.restore();
+                        pop();
+                    }
+                }
+            }
+            
+            // Increment rotation offset for animation (clockwise)
+            if (isAnimating) {
+                rotationOffset += animationSpeed;
+            }
+        }
+
+        function toggleAnimation() {
+            isAnimating = !isAnimating;
+        }
+
+        function changeSpeed(factor) {
+            animationSpeed *= factor;
+        }
+    </script>
 </body>
 </html>
