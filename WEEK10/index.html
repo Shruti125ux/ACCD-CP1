@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Loading Animation - Process Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #141414;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, #000000 0%, #141414 100%);
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 3px solid #E50914;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .netflix-logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #E50914;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #b3b3b3;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            font-size: 16px;
+            color: #E50914;
+            font-weight: 500;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #E50914;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            font-weight: 600;
+        }
+
+        .section-content {
+            font-size: 18px;
+            color: #e5e5e5;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Image Grid */
+        .image-container {
+            background: #1f1f1f;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .image-caption {
+            font-size: 15px;
+            color: #b3b3b3;
+            font-style: italic;
+            padding: 10px;
+            background: #0a0a0a;
+            border-radius: 4px;
+            border-left: 3px solid #E50914;
+        }
+
+        /* Process Steps */
+        .process-step {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #E50914;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            box-shadow: 0 5px 20px rgba(229, 9, 20, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #E50914;
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #cccccc;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 3px solid #E50914;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #808080;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .netflix-logo {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="netflix-logo">NETFLIX</div>
+            <h1>Time & Oscillation Assignment</h1>
+            <p class="subtitle">Creative Prototyping - P5.js Animation</p>
+            <p class="author">Shruti Amritkar | M.Des, ArtCenter 2025</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Final Animation -->
+        <section class="section">
+            <h2 class="section-title">Final Animation</h2>
+            <p class="section-content">
+                The final Netflix loading animation successfully transforms a mundane waiting experience into 
+                an engaging visual journey. Through iterative exploration of oscillation, rotation, and 
+                time-based functions in P5.js, the animation balances brand identity with creative expression. 
+                The project demonstrates how technical constraints can inspire innovative design solutions.
+            </p>
+            
+            <!-- Live P5.js Animation -->
+            <div style="margin-bottom: 40px; background: #1a1a1a; border-radius: 8px; overflow: hidden; padding: 20px;">
+                <iframe src="https://editor.p5js.org/samritkar/full/8Nbh6e0d6" 
+                        width="100%" 
+                        height="650" 
+                        frameborder="0"
+                        style="display: block; border-radius: 4px;">
+                </iframe>
+                <p style="margin-top: 15px; color: #b3b3b3; font-size: 14px; text-align: center;">
+                    Interactive p5.js sketch embedded from editor
+                </p>
+            </div>
+            
+            <div class="image-container">
+                <img src="image12.png" alt="Final Netflix Loading Animation Screenshot">
+                <div class="image-caption">Final animation screenshot with holiday-themed surprise element</div>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-content">
+                Transforming the boring Netflix loading screen into something interesting and engaging. 
+                This project explores creative animation techniques using P5.js, focusing on time-based 
+                functions and oscillation to create a captivating loading experience.
+            </p>
+        </section>
+
+        <!-- Inspiration -->
+        <section class="section">
+            <h2 class="section-title">Inspiration</h2>
+            <p class="section-content">
+                The starting point: Netflix's standard loading screen. Simple, functional, but lacking 
+                personality. The goal was to reimagine this experience with dynamic motion and visual interest.
+            </p>
+            <div class="image-container">
+                <img src="image0.png" alt="Netflix Original Loading Screen">
+                <div class="image-caption">Original Netflix loading screen - the inspiration for transformation</div>
+            </div>
+        </section>
+
+        <!-- Process Documentation -->
+        <section class="section">
+            <h2 class="section-title">Design Process</h2>
+
+            <!-- Step 1 -->
+            <div class="process-step">
+                <span class="step-number">1</span>
+                <h3 class="step-title">Initial Explorations - Circular Patterns & Arcs</h3>
+                <p class="step-description">
+                    Started with basic explorations using circular patterns and arc geometry. 
+                    Experimented with different configurations to understand the visual rhythm and movement possibilities.
+                </p>
+                <div class="image-container">
+                    <img src="image1.png" alt="Circular Pattern Exploration 1">
+                    <div class="image-caption">First circular pattern exploration</div>
+                </div>
+                <div class="image-container">
+                    <img src="image2.png" alt="Circular Pattern Exploration 2">
+                    <div class="image-caption">Arc geometry experimentation</div>
+                </div>
+                <div class="image-container">
+                    <img src="image3.png" alt="Circular Pattern Exploration 3">
+                    <div class="image-caption">Refining circular motion patterns</div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step">
+                <span class="step-number">2</span>
+                <h3 class="step-title">Canvas Optimization - Screen Proportions</h3>
+                <p class="step-description">
+                    Changed the background from square to rectangle to better resemble laptop or TV horizontal screens. 
+                    This adjustment improved the context and viewing experience.
+                </p>
+                <div class="image-container">
+                    <img src="image4.png" alt="Horizontal Canvas">
+                    <div class="image-caption">Horizontal canvas matching TV/laptop screen proportions</div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step">
+                <span class="step-number">3</span>
+                <h3 class="step-title">Layered Arcs - HALF_PI Rotation</h3>
+                <p class="step-description">
+                    Added 3 layers of arcs using numArcs syntax and implemented HALF_PI function for rotation. 
+                    This created depth and visual complexity through layering.
+                </p>
+                <div class="image-container">
+                    <img src="image5.png" alt="Three Layered Arcs with HALF_PI">
+                    <div class="image-caption">Three-layer arc system with HALF_PI rotation</div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step">
+                <span class="step-number">4</span>
+                <h3 class="step-title">Rotation Refinement - QUARTER_PI Function</h3>
+                <p class="step-description">
+                    The HALF_PI rotation didn't achieve the desired effect. Switched to QUARTER_PI function 
+                    for a more subtle and controlled rotation pattern.
+                </p>
+                <div class="image-container">
+                    <img src="image6.png" alt="QUARTER_PI Rotation">
+                    <div class="image-caption">Improved rotation using QUARTER_PI function</div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="process-step">
+                <span class="step-number">5</span>
+                <h3 class="step-title">Maximum Detail - 10 Arcs with Netflix Color Theme</h3>
+                <p class="step-description">
+                    Increased total arcs to 10 and reduced thickness to create delicate, refined lines. 
+                    Applied color gradation from light to dark red to match Netflix's iconic branding.
+                </p>
+                <div class="image-container">
+                    <img src="image7.png" alt="Ten Thin Arcs Red Gradient">
+                    <div class="image-caption">10 thin arcs with Netflix-inspired red color gradation</div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="process-step">
+                <span class="step-number">6</span>
+                <h3 class="step-title">Color & Shape Exploration - Triangular Forms</h3>
+                <p class="step-description">
+                    Experimented with alternative color schemes and replaced rotating pie shapes with triangles. 
+                    Initial attempts resulted in overlapping forms that needed refinement.
+                </p>
+                <div class="image-container">
+                    <img src="image8.png" alt="Color Exploration">
+                    <div class="image-caption">Color exploration phase - testing different palettes</div>
+                </div>
+                <div class="image-container">
+                    <img src="image9.png" alt="Overlapping Triangles">
+                    <div class="image-caption">Triangular rotation - initial overlapping issue</div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="process-step">
+                <span class="step-number">7</span>
+                <h3 class="step-title">Hourglass Concept - Refined Geometry</h3>
+                <p class="step-description">
+                    Modified triangles to create an hourglass shape. Reduced stroke thickness and changed 
+                    from grey to black for stronger contrast and visual impact.
+                </p>
+                <div class="image-container">
+                    <img src="image10.png" alt="Hourglass Shape">
+                    <div class="image-caption">Hourglass-inspired geometry with refined strokes</div>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="process-step">
+                <span class="step-number">8</span>
+                <h3 class="step-title">Dynamic Element - Oscillating Ball</h3>
+                <p class="step-description">
+                    Added a small red ball with back-and-forth oscillating motion, creating the illusion 
+                    of movement inside an hourglass. This brought life and rhythm to the static forms.
+                </p>
+                <div class="image-container">
+                    <img src="image11.png" alt="Red Ball Oscillation">
+                    <div class="image-caption">Red ball with oscillating motion inside hourglass forms</div>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="process-step">
+                <span class="step-number">9</span>
+                <h3 class="step-title">Surprise Element - Holiday Theme</h3>
+                <p class="step-description">
+                    Added a festive surprise element to break the monotony of continuous loading animation. 
+                    Incorporated holiday/Christmas aesthetics to give Netflix a seasonal feel.
+                </p>
+                <div class="image-container">
+                    <img src="image12.png" alt="Holiday Theme Element">
+                    <div class="image-caption">Holiday-themed surprise element for seasonal Netflix branding</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Thoughts -->
+        <section class="section">
+            <h2 class="section-title">Reflection</h2>
+            <p class="section-content">
+                This iterative design process showcased the power of experimentation in creative coding. 
+                Each modification brought new insights into motion design, oscillation principles, and brand-aligned animation. 
+                The journey from basic circular patterns to a sophisticated, themed loading experience demonstrates 
+                the value of continuous refinement and creative exploration in interaction design.
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Shruti Amritkar | ArtCenter College of Design | Creative Prototyping - P5.js Assignment</p>
+    </footer>
+</body>
+</html>
