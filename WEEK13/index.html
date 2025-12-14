@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Prototyping - Interactive Mall Kiosk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #4a148c 0%, #311b92 50%, #1a0033 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #00D9FF;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 50px 0;
+        }
+        
+        /* Section Styling */
+        section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #FF6B35;
+            text-align: left;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Embedded P5.js */
+        .p5-embed {
+            width: 100%;
+            height: 800px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            background: #000;
+        }
+        
+        .p5-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Image Grid Layouts */
+        .image-grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .grid-4 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-grid img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .info-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .grid-4, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .p5-embed {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Creative Prototyping</h1>
+            <h2>Interactive Mall Kiosk</h2>
+            <p class="subtitle">Shruti Amritkar • ArtCenter • Fall 2025</p>
+        </header>
+        
+        <div class="divider"></div>
+        
+        <!-- Embedded P5.js Project -->
+        <section>
+            <h3 class="section-title">Final Prototype</h3>
+            <div class="p5-embed">
+                <!-- Replace this URL with your P5.js editor sketch URL -->
+                <!-- Format: https://editor.p5js.org/YOUR_USERNAME/full/YOUR_SKETCH_ID -->
+                <iframe src="https://editor.p5js.org/samritkar/full/iWgw-g4U3"></iframe>
+            </div>
+            <p class="section-description">
+                An interactive Rock Paper Scissors game designed as a mall kiosk experience. 
+                Users interact with the kiosk using hand gestures detected through ML5.js handpose tracking.
+            </p>
+        </section>
+        
+        <!-- Initial Explorations -->
+        <section>
+            <h3 class="section-title">Initial Explorations</h3>
+            <p class="section-description">
+                Early concept development and wireframing to establish the core interaction model 
+                and visual direction for the kiosk interface.
+            </p>
+            <div class="image-grid grid-4">
+                <img src="image1.png" alt="Initial exploration 1">
+                <img src="image2.png" alt="Initial exploration 2">
+                <img src="image3.png" alt="Initial exploration 3">
+                <img src="image4.png" alt="Initial exploration 4">
+            </div>
+        </section>
+        
+        <!-- Format Changes -->
+        <section>
+            <h3 class="section-title">Format Changes</h3>
+            <div class="image-grid grid-2">
+                <img src="image5.png" alt="Format change 1">
+                <img src="image6.png" alt="Format change 2">
+            </div>
+            <div class="info-box">
+                <p>
+                    Small changes in UI and color scheme were made during this phase. 
+                    Camera settings and size of the canvas were adjusted to optimize 
+                    the user experience and ensure proper hand tracking functionality.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Refining the Interface -->
+        <section>
+            <h3 class="section-title">Refining the Interface</h3>
+            <p class="section-description">
+                Iterative refinement of visual design, layout structure, and interaction patterns 
+                to create a polished, user-friendly kiosk experience.
+            </p>
+            <div class="image-grid grid-4">
+                <img src="image7.png" alt="Interface refinement 1">
+                <img src="image9.png" alt="Interface refinement 2">
+                <img src="image10.png" alt="Interface refinement 3">
+                <img src="image8.png" alt="Interface refinement 4">
+            </div>
+        </section>
+        
+        <!-- Game Settings -->
+        <section>
+            <h3 class="section-title">Game Settings</h3>
+            <p class="section-description">
+                Editing the scoreboard and game logic settings to ensure fair gameplay, 
+                accurate score tracking, and smooth state transitions.
+            </p>
+            <div class="image-grid grid-2">
+                <img src="image11.png" alt="Game settings 1">
+                <img src="image12.png" alt="Game settings 2">
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 40px 0; opacity: 0.7;">
+            <p>Creative Prototyping Project 4 • Fall 2025</p>
+            <p>Shruti Amritkar • M.Des Interactive Design • ArtCenter College of Design</p>
+        </footer>
+    </div>
+</body>
+</html>
